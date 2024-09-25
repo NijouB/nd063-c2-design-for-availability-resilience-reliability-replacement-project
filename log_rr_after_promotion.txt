@@ -1,0 +1,48 @@
+[ec2-user@ip-10-2-11-89 ~]$ mysql -h udacity-readreplica.cp077ppzghu9.us-west-2.rds.amazonaws.com -P 3306 -u admin -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.35 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| udacity            |
++--------------------+
+5 rows in set (0.002 sec)
+
+MySQL [(none)]> USE udacity;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [udacity]> SELECT * FROM employees;
++----+----------+-------------------+----------+
+| id | name     | position          | salary   |
++----+----------+-------------------+----------+
+|  1 | John Doe | Software Engineer | 75000.00 |
++----+----------+-------------------+----------+
+1 row in set (0.001 sec)
+
+MySQL [udacity]> INSERT INTO employees (name, position, salary) VALUES ('Jane Smith', 'Product Manager', 85000.00);
+Query OK, 1 row affected (0.004 sec)
+
+MySQL [udacity]> SELECT * FROM employees;
++----+------------+-------------------+----------+
+| id | name       | position          | salary   |
++----+------------+-------------------+----------+
+|  1 | John Doe   | Software Engineer | 75000.00 |
+|  2 | Jane Smith | Product Manager   | 85000.00 |
++----+------------+-------------------+----------+
+2 rows in set (0.001 sec)
+
+MySQL [udacity]> 
